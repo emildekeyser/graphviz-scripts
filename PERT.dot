@@ -1,0 +1,44 @@
+digraph
+{
+	# rankdir=LR;
+	
+	Start[color=red; label="0/0 Start 0/0 \n 0"]
+	"Opstellen Prijsmodel"[label="0/1 Opstellen Prijsmodel 1/2\n1"]
+	"TechStack Samenstellen"[color=red; label="0/0 TechStack Samenstellen 2/2\n2"]
+	"Backend Architectuur"[color=red; label="2/2 Backend Architectuur 4/4\n2"]
+	"Betaalmethoden Researchen"[label="2/5 Betaalmethoden Researchen 4/7\n2"]
+	"Essentiele infrastructuur"[color=red; label="4/4 Essentiele infrastructuur 7/7\n3"]
+	"Frontend Architectuur - Site"[label="2/7 Frontend Architectuur - Site 5/10\n3"]
+	"Frontend Architectuur - App"[label="2/7 Frontend Architectuur - App 5/10\n3"]
+	"Non-essentiele infrastructuur"[label="4/11 Non-essentiele infrastructuur 5/12\n1"]
+	"Implementatie"[color=red; label="7/7 Implementatie 12/12\n5"]
+	"Research legaliteiten"[label="0/9 Research legaliteiten 3/12\n3"]
+	"Klantendienst"[color=red; label="12/12 Klantendienst 16/16\n4"]
+	"Deployment"[color=red; label="16/16 Deployment 17/17\n1"]
+
+	Start -> "Research legaliteiten";
+	Start -> "Opstellen Prijsmodel";
+	Start -> "TechStack Samenstellen"[color=red];
+
+	"Opstellen Prijsmodel" -> "Backend Architectuur";
+
+	"TechStack Samenstellen" -> "Betaalmethoden Researchen";
+	"TechStack Samenstellen" -> "Backend Architectuur"[color=red];
+	"TechStack Samenstellen" -> "Frontend Architectuur - Site";
+	"TechStack Samenstellen" -> "Frontend Architectuur - App";
+
+	"Backend Architectuur" -> "Essentiele infrastructuur"[color=red];
+	"Backend Architectuur" -> "Non-essentiele infrastructuur";
+
+	"Betaalmethoden Researchen" -> "Implementatie";
+	"Essentiele infrastructuur" -> "Implementatie"[color=red];
+	"Frontend Architectuur - Site" -> "Implementatie";
+	"Frontend Architectuur - App" -> "Implementatie"; 
+
+	"Non-essentiele infrastructuur" -> "Klantendienst";
+	"Implementatie" -> "Klantendienst"[color=red]; 
+	"Research legaliteiten" -> "Klantendienst"; 
+
+	"Klantendienst" -> "Deployment"[color=red]; 
+
+}

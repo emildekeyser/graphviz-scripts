@@ -1,0 +1,38 @@
+graph
+{
+	rankdir=LR;
+
+	"TicketQ Website" -- Voorbereding;
+	"TicketQ Website" -- Implementatie;
+	"TicketQ Website" -- Deployment;
+
+	Voorbereding -- "Research legaliteiten";
+	Voorbereding -- "Opstellen Prijsmodel";
+	Voorbereding -- "TechStack Samenstellen";
+	Voorbereding -- Architectuur;
+
+	"TechStack Samenstellen" -- "Betaalmethoden Researchen";
+
+	Architectuur -- Backend;
+	Architectuur -- Frontend;
+
+	Backend -- db;
+	Backend -- domein;
+
+	Frontend -- Site;
+	Frontend -- App;
+
+	Implementatie -- "Agile Development";
+
+	"Agile Development" -- Programeren;
+	"Agile Development" -- Design;
+	"Agile Development" -- Testing;
+
+	Implementatie -- Infrastructuur;
+
+	Infrastructuur -- "Niet-essentieel";
+	Infrastructuur -- Essentieel;
+
+	Deployment -- "Service Deployment";
+	Deployment -- "Klantendienst starten";
+}
