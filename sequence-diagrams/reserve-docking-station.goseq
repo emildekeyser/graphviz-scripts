@@ -1,0 +1,15 @@
+participant Pilot (icon="human")
+participant UI
+participant Controller
+participant Server: Nearest station
+
+Pilot->UI: requestLanding(dockingStationCoördinates)
+UI->Controller: requestLanding(dockingStationCoördinates)
+Controller->Server: requestLanding(dockingStationCoördinates)
+alt: [Docks available]
+	Server-->Controller: landingDock
+	Controller-->UI: landingDock
+else:
+	Server-->Controller: dockingStationFullMessage
+	Controller-->UI: dockingStationFullMessage
+end

@@ -1,0 +1,14 @@
+participant Pilot (icon="human")
+participant UI
+participant Controller
+participant Server:Stations database
+
+Pilot->UI: Request nearest docking station
+UI->Controller: RequestNearestDockingStation
+Controller->Server: RequestNearestDockingStation(coördinates)
+Server-->Controller: nearestDockingStationCoördinates
+Controller-->UI: nearestDockingStationCoördinates
+opt: [Unreachable]
+    note over Controller: Calculate reachable\nbased on fuel left
+	Controller-->UI: emergncyWarning
+end

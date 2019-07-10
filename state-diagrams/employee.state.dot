@@ -1,0 +1,28 @@
+digraph
+{
+	rankdir=LR;
+	graph[splines=ortho, style=rounded];
+	node[shape=record, style="rounded,filled", fillcolor=cadetblue2];
+	edge[arrowhead=vee, fontsize=6];
+
+	A[shape=circle style=filled fillcolor=black]; # start
+	B[label="Active", height=1];
+	C[label="On holiday"];
+	D[label="Unable to work"];
+	E[label="Retired"];
+	F[label="Fired"];
+	G[label="Quit"];
+
+	A -> B;
+
+	B -> C [xlabel="Leave on holiday", minlen=2];
+	C -> B [xlabel="Return from holiday"];
+
+	B -> D [xlabel="Sickness/Injury", minlen=3];
+	D -> B [xlabel="Recovered"];
+
+	B -> E [xlabel="Retire"];
+	B -> F [xlabel="Fire"];
+	B -> G [xlabel="Quit"];
+
+}

@@ -1,0 +1,36 @@
+digraph
+{
+	# label="Docking station";
+	# labelloc=top;
+	# rankdir=LR;
+	graph[compound=true, splines=ortho, style=rounded];
+	node[shape=record, style="rounded,filled", fillcolor=cadetblue2];
+	edge[arrowhead=vee, fontsize=6, concentrate=true];
+	
+	subgraph cluster_A
+	{
+		label="In operation";
+		bgcolor=cadetblue2;
+		labelfloat=true
+
+		E[label="Docks available"];
+		F[label="No docks available"];
+
+		E -> F[xlabel="Ship lands\n[on last dock]", minlen=2];
+		F -> E[xlabel="Ship leaves\n[all docks are filled]"];
+	}
+
+	B[label="Out of operation"];
+	C[label="Under construction"];
+	D[label="Retired"];
+	I[shape=circle style=filled fillcolor=black]; # start
+	# J[shape=doublecircle style=filled fillcolor=black]; # end
+
+	C -> E [xlabel="Staion opens"];
+	E -> B [xlabel="Station goes out of operation", ltail=cluster_A, minlen=3];
+	E -> D [xlabel="Station\nretires", ltail=cluster_A, minlen=3];
+	B -> C [xlabel="Repair\n[station damaged]"];
+	B -> D [xlabel="Station\nretires"];
+	I -> C;
+	# D -> J;
+}

@@ -1,0 +1,9 @@
+participant Pilot (icon="human")
+participant UI
+participant Controller
+participant Server: Station database
+
+Pilot->UI: report delay
+UI->Controller: report(delay)
+Controller->Server: report(delay, nextStop)
+Server->Stations: report(delay, nextStop)
